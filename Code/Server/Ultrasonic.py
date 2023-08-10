@@ -50,7 +50,7 @@ class Ultrasonic:
     def run(self):
         self.PWM=Motor()
         while True:
-            print ('Checking distance')
+            # print ('Checking distance')
             distance = self.get_distance()
             time.sleep(0.2)
             #print ("The distance is "+str(distance)+"CM")

@@ -14,7 +14,7 @@ from Ultrasonic import Ultrasonic
 
 async def start_ultrasonic():
     
-    print ('Ultrasonic is starting...')
+    print ('Ultrasonic is running...')
     servo=Servo()
     servo.setServoPwm('0',90)
     servo.setServoPwm('1',140)
@@ -40,7 +40,7 @@ async def start_camera(flip = True, res=(640,480), audio_out=None):
 
     while(True):
         try:
-            t1 = time.time()
+            # t1 = time.time()
             # Read the frame
             frame = cam.capture_array()
             # Frame conversion to gray
@@ -59,8 +59,8 @@ async def start_camera(flip = True, res=(640,480), audio_out=None):
                         # If the audio is not playing then play the audio
                         audio_out.music.play()
         
-            t2 = time.time()
-            print (f'frame_time: {t2-t1}')
+            # t2 = time.time()
+            # print (f'frame_time: {t2-t1}')
 
         except Exception as e:
             print (e)
