@@ -110,6 +110,6 @@ if __name__ == '__main__':
             # Exit the program
             exit()
     else:
-        audio_out = None
+        audio_mixer = None
 
-    asyncio.run(main(audio_out))
+    asyncio.run(main(audio_mixer))
