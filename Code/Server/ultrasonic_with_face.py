@@ -23,7 +23,8 @@ async def start_ultrasonic():
     servo.setServoPwm('0',90)
     servo.setServoPwm('1',140)
     try:
-        ultrasonic.run()
+        await asyncio.to_thread(ultrasonic.run)
+        #ultrasonic.run()
     except KeyboardInterrupt:  # When 'Ctrl+C' is pressed, the child program destroy() will be  executed.
         PWM.setMotorModel(0,0)
         servo.setServoPwm('0',90)
