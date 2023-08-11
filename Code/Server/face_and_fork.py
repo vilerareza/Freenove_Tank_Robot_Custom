@@ -12,14 +12,13 @@ from servo import *
 
 is_servo_moving = False
 
-async def test_fork():
+def test_fork():
 
     global is_servo_moving
     # Setting the movement flag
     is_servo_moving = True
 
     print ('Moving the fork...')
-    servo=Servo()
     servo.setServoPwm('0',90)
     servo.setServoPwm('1',140)
     try:
@@ -37,6 +36,8 @@ async def test_fork():
 
     # Setting the movement flag
     is_servo_moving = False
+    # Setting the movement flag
+    print ('Done moving fork...')
 
 
 async def start_camera(flip = True, res=(640,480), audio_out=None):
@@ -72,7 +73,7 @@ async def start_camera(flip = True, res=(640,480), audio_out=None):
                         # If the audio is not playing then play the audio
                         audio_out.music.play()
                 if not is_servo_moving:
-                    await test_fork()
+                    await asyncio.to_thread(test_fork)
         
             t2 = time.time()
             print (f'frame_time: {t2-t1}')
