@@ -20,8 +20,10 @@ def test_fork():
 
     print ('Moving the fork...')
     servo=Servo()
+    print ('Servo initialized')
     servo.setServoPwm('0',90)
     servo.setServoPwm('1',140)
+    print ('Servo angle ok')
     try:
         while True:
             for i in range(90,150,1):
