@@ -12,7 +12,8 @@ from servo import *
 
 is_servo_moving = False
 
-def test_fork():
+
+async def test_fork():
 
     global is_servo_moving
     # Setting the movement flag
@@ -24,11 +25,9 @@ def test_fork():
     print ('Servo angle ok')
     try:
         for i in range(90,150,1):
-            print (i)
             servo.setServoPwm('0',i)
             time.sleep(0.01)
         for i in range(150,90,-1):
-            print (i)
             servo.setServoPwm('0',i)
             time.sleep(0.01)   
     except KeyboardInterrupt:
@@ -75,7 +74,8 @@ async def start_camera(flip = True, res=(640,480), audio_out=None):
                         # If the audio is not playing then play the audio
                         audio_out.music.play()
                 if not is_servo_moving:
-                    await asyncio.to_thread(test_fork)
+                    # await asyncio.to_thread(test_fork)
+                    await test_fork()
         
             t2 = time.time()
             print (f'frame_time: {t2-t1}')
