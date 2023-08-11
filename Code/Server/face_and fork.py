@@ -19,7 +19,6 @@ def test_fork():
     is_servo_moving = True
 
     print ('Moving the fork...')
-    servo=Servo()
     print ('Servo initialized')
     servo.setServoPwm('0',90)
     servo.setServoPwm('1',140)
