@@ -25,9 +25,11 @@ def test_fork():
     try:
         while True:
             for i in range(90,150,1):
+                print (i)
                 servo.setServoPwm('0',i)
                 time.sleep(0.01)
             for i in range(150,90,-1):
+                print (i)
                 servo.setServoPwm('0',i)
                 time.sleep(0.01)   
     except KeyboardInterrupt:
