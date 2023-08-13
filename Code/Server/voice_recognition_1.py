@@ -3,6 +3,7 @@ from ctypes import *
  
 # Initialize the recognizer
 r = sr.Recognizer()
+r.energy_threshold = 20
 
 # ERROR_HANDLER_FUNC = CFUNCTYPE(None, c_char_p, c_int, c_char_p, c_int, c_char_p)
 # def py_error_handler(filename, line, function, err, fmt):
@@ -14,18 +15,22 @@ r = sr.Recognizer()
 # asound.snd_lib_error_set_handler(c_error_handler)
 
 
+
+
 while True:   
 
     try:
          
         # use the microphone as source for input.
         with sr.Microphone() as source_:
-             
+            print ('start listening')
             r.adjust_for_ambient_noise(source_, duration=0.2)
              
             #listens for the user's input
             audio2 = r.listen(source_)
-             
+            
+            print ('detecting sound')
+
             # Using google to recognize audio
             MyText = r.recognize_google(audio2)
             MyText = MyText.lower()
