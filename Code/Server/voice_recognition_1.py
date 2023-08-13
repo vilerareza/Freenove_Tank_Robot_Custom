@@ -3,7 +3,6 @@ from ctypes import *
  
 # Initialize the recognizer
 r = sr.Recognizer()
-r.energy_threshold = 20
 
 ERROR_HANDLER_FUNC = CFUNCTYPE(None, c_char_p, c_int, c_char_p, c_int, c_char_p)
 def py_error_handler(filename, line, function, err, fmt):
@@ -23,6 +22,7 @@ while True:
         with sr.Microphone() as source_:
             r.adjust_for_ambient_noise(source_, duration=0.2)
             #listens for the user's input
+            print ('listening...')
             audio2 = r.listen(source_)
             # Using google to recognize audio
             MyText = r.recognize_google(audio2)
